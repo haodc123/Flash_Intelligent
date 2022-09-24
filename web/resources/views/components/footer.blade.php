@@ -12,11 +12,7 @@
 					</div>
                     <span class="kw">{{ trans('message.kw.common') }}</span>
 					<div class="cloud-tags inner">
-						<ul class="tab-list">
-                        @foreach ($arr_tags as $tags)
-							<li><a href="../tags/{{ $tags->g_cat_t_slug }}" data-tab="tab-1">{{ $tags->g_cat_t_name }}</a></li>
-						@endforeach
-						</ul>
+						<!-- TODO: hard code popular tag -->
 					</div>
 				</section>
             <footer id="footer">

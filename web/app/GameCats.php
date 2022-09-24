@@ -76,11 +76,11 @@ class GameCats extends Model
                 $gc_all[$i]->g_cat_slug,
                 $gc_all[$i]->g_cat_order
             );
-            $arr_t = explode(',', $gc_all[$i]->g_cat_tags_slug);
-            for ($t=0; $t<sizeof($arr_t); $t++) {
-                if ($arr_t[$t] != '')
-                    array_push($arr_tags, $arr_t[$t]);
-            }
+            // $arr_t = explode(',', $gc_all[$i]->g_cat_tags_slug);
+            // for ($t=0; $t<sizeof($arr_t); $t++) {
+            //     if ($arr_t[$t] != '')
+            //         array_push($arr_tags, $arr_t[$t]);
+            // }
         }
         return array($gc_by_id, $arr_tags);
     }            

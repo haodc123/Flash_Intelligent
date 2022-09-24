@@ -1,6 +1,6 @@
 <div class="video col">
 	<div class="image fit">
-		<img src="../images/thumb/{{ getPathThumb($gi->g_site, $gi->g_thumb) }}" onerror="this.onerror=null;this.src='../images/thumb/thumb_def.png';" alt="Game online {{ $gc_by_id[$gi->g_cat_1][0] }}" />
+		<img src="../images/thumb/{{ getPathThumb($gi->g_site, $gi->g_thumb) }}" onerror="this.onerror=null;this.src='../images/thumb/thumb_def.png';" alt="Game online {{ $gi->g_cat_2 ? $gc_by_id[$gi->g_cat_2][0] : $gc_by_id[$gi->g_cat_1][0] }}" />
 	</div>
 	@if ($gi->g_vote_time > 0 || $gi->g_play_time > 0)
 		{!! showVoteStar2($gi->g_vote, $gi->g_vote_time, $gi->g_play_time) !!}
