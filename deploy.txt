@@ -1,5 +1,5 @@
-Deploy to shared host:
-- https://viblo.asia/p/deploy-laravel-5-len-shared-hosting-Qbq5Q4qXlD8
+Deploy to sharedd host:
+- https://viblo.asia/p/deploy-laravel-5-len-sharedd-hosting-Qbq5Q4qXlD8
 
 Update:
 - after do above link:
