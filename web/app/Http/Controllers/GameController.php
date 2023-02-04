@@ -73,7 +73,7 @@ class GameController extends Controller
         return redirect()->back();
     }
 
-    public function vote_game(Request $request) {
+    public function api_vote_game(Request $request) {
         $g = new Game();
         // $json = json_decode($request, true);
         // $id = $json['id'];

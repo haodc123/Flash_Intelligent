@@ -39,6 +39,26 @@ class SearchController extends Controller
                 'arr_tags' => array_unique($arr_tags)
         ]);
         
-	}
+    }
 
+    public function api_search(Request $request) {
+
+	$g = new Game();
+	$gt = new GameTag();
+	$kw = $request->input('search_data');
+
+	$gt_all = $gt->getArrayTagRichInfo();
+        $gt_by_id = $gt_all[0];
+        $arr_tags = $gt_all[1];
+
+        $g_search = $g->getGamesBySearch($kw);
+
+        if (sizeof($g_search) > 0) {
+            return response()->json($g_search);
+        }
+
+        $g_randomcat = $g->getGamesByCatID(28, 60); // Puzzle
+        return response()->json($g_randomcat);
+        
+    }
 }

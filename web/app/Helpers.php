@@ -66,6 +66,9 @@ function getPathThumb($site, $thumb) {
 		case 'https://y8.com':
 			$pthumb = 'y8'.'/'.$thumb;
 			break;
+		case 'https://gamedistribution.com':
+			$pthumb = 'distribution'.'/'.$thumb;
+			break;
 		default:
 			$pthumb = 'others'.'/'.$thumb;
 			break;

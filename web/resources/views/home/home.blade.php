@@ -1,6 +1,5 @@
 @component('components.header', ['gtitle' => ''])
 @endcomponent
-    
 			
 		<section id="banner" data-video="images/banner">
 			<div class="inner">
@@ -27,7 +26,7 @@
 				<form method="post" action="{{ route('search')}}">
 					{{csrf_field()}}
 					<ul>
-						<li><input placeholder="{{ trans('message.search.placeholder') }}" type="text" name="search_data" /></li>
+						<li><input id="search_input" placeholder="{{ trans('message.search.placeholder') }}" type="text" name="search_data" /></li>
 						<li><button type="submit" name="search_btn">{{ trans('message.search.button') }}</button></li>
 					</ul>
 				</form>
