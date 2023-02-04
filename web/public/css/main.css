@@ -2448,8 +2448,13 @@
 			display: block;
 			margin: 0 0 2em 0;
 			width: 100%;
+			max-height: 130px;
+			width: auto;
+			height: auto;
 		}
-
+		.tabs .image.fit {
+			max-height: 110px;
+		}
 			.image.fit img {
 				width: 100%;
 			}
@@ -2709,12 +2714,12 @@
 		}
 
 			ul.tab-list li a.active {
-				background: #aa14cc;
+				background: #eeeeee;
 				color: #319DA0 !important;
 			}
 
 			ul.tab-list li a:hover {
-				background: #693dcc;
+				background: #dddddd;
 				color: #319D90 !important;
 			}
 
@@ -3076,7 +3081,7 @@
 		}
 
 			.wrapper.style2 input, .wrapper.style2 select, .wrapper.style2 textarea {
-				color: #ffffff;
+				color: #319d90;
 			}
 
 			.wrapper.style2 a {
@@ -3376,7 +3381,8 @@
 			padding-top: 0.2em;
 			padding-bottom: 0;
 			padding-left: 0.7em;
-			font-size: 1.15em;
+			/* font-size: 1.15em; */
+			font-size: 15px;
 			font-weight: 300;
 			line-height: 22px;
 			margin: 0;
@@ -3925,7 +3931,11 @@
 		}
 
 		.video.col .caption {
-			font-size: 17px;
+			font-size: 15px;
+			margin-top: -10px;
+		}
+		.tabs .video.col .caption {
+			margin-top: auto;
 		}
 	/* End slide */
 
@@ -3984,14 +3994,24 @@
 
 	/* Game by cat */
 	
+	/* .tabs .g-b-cat .col {
+		position: relative;
+		width: 27% !important;
+		float: left;
+		border: solid 1px #319DA0;
+		margin: 0 18px 24px 18px;
+		padding: 8px;
+		background-color: #ffffff66;
+	} */
 	.g-b-cat .col {
-		width: 19% !important;
+		width: 27% !important;
 		float: left;
 		border: solid 1px #319DA0;
 		margin: 0 18px 24px 18px;
 		padding: 8px;
 		background-color: #ffffff66;
 	}
+	
 	#g-by-cat-2 header {
 		text-align: right;
 		padding-right: 60px;
@@ -4036,12 +4056,17 @@
 .tab-list .more a {
 	background-color: transparent !important;
 }
-#g-by-cat-1 .caption {
+.caption {
 	padding: 0.5em !important;
-	padding-top: 5px !important;
+	padding-top: 0.2em !important;
 	padding-left: 0.4em !important;
 	padding-bottom: 0 !important;
+	/* margin-top: -5px !important; */
 }
+/* .g-b-cat .caption {
+	margin-top: 5px !important;
+} */
+
 /* End Tab List */
 
 
@@ -4178,6 +4203,9 @@ span.kw {
 		background-color: #319DA0;
 		color: #fff !important;
 	}
+		#footer a, #footer span {
+			color: #fff !important;
+		}
 
 		#footer > .inner {
 			margin: 0 auto;

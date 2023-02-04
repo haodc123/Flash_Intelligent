@@ -12,14 +12,14 @@
         <link rel="stylesheet" href="../css/main.css" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 		
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-KK6BKBHN2Z"></script>
+		<!-- Google tag (gtagname.js) -->
+		<script async src="https://www.googletagmanager.com/gtagname/js?id=G-KK6BKBHN2Z"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
+		  function gtagname(){dataLayer.push(arguments);}
+		  gtagname('js', new Date());
 
-		  gtag('config', 'G-KK6BKBHN2Z');
+		  gtagname('config', 'G-KK6BKBHN2Z');
 		</script>
 		
     </head>

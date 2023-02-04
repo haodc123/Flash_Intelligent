@@ -113,9 +113,9 @@ function slugifyUnicode($title) {
 	return strtolower(preg_replace(array_keys($map), array_values($map), $title));
 }
 
-function showCat($cat1, $catt, $cat2 = 0, $catyo = 0) {
-	if ($catt != '')
-		return '<a href="cat/'.slugifyUnicode($catt).'">'.$catt.'</a>';
+function showCat($cat1, $gtagname, $cat2 = 0, $catyo = 0) {
+	if ($gtagname != '0')
+		return '<a href="tag/'.slugifyUnicode($gtagname).'">'.$gtagname.'</a>';
 	else {
 		switch ($cat1) {
 			case 28:
@@ -134,5 +134,37 @@ function showCat($cat1, $catt, $cat2 = 0, $catyo = 0) {
 	}
 }
 
+function showAlt($gt_by_id, $gcat_1, $gtagname) {
+	$catOrTagName = "";
+	if (isset($gtagname) && $gtagname != "0")
+		$catOrTagName = $gtagname;
+	else {
+		switch ($gcat_1) {
+			case 28:
+				$cat_name = 'Puzzle';
+				break;
+			case 65:
+				$cat_name = 'Board game';
+			break;
+			default:
+				$cat_name = 'Puzzle';
+		}
+		$catOrTagName = $cat_name;
+	}
+	return "Game online ".$catOrTagName;
+}
+function getCatNameByID($cat_id) {
+	switch ($cat_id) {
+		case 28:
+			$cat_name = 'Puzzle';
+			break;
+		case 65:
+			$cat_name = 'Board game';
+		break;
+		default:
+			$cat_name = 'Puzzle';
+	}
+	return $cat_name;
+}
 
 ?>

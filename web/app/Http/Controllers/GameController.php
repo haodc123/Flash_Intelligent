@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\GameCats;
+use App\GameTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -13,11 +13,14 @@ class GameController extends Controller
     public function game($slug) {
 
 		$g = new Game();
-        $gc = new GameCats();
+        $gt = new GameTag();
         
-        $gc_all = $gc->getArrayCatRichInfo();
-        $gc_by_id = $gc_all[0];
-        $arr_tags = $gc_all[1];
+        // $gt_all = $gt->getArrayTagRichInfo();
+        // $gc_by_id = $gt_all[0];
+        // $arr_tags = $gt_all[1];
+        $gt_all = $gt->getArrayTagRichInfo();
+        $gt_by_id = $gt_all[0];
+        $arr_tags = $gt_all[1];
 
 		$game = $g->getGameBySlug($slug);
 
@@ -27,24 +30,24 @@ class GameController extends Controller
             $role = $user->role;
 		
         if ($game) {
-            $g_similar = $g->getGamesByCatIDs(array($game->g_cat_1, $game->g_cat_2));
+            $g_similar = $g->getGamesByCatIDs(array($game->g_cat_1, $game->g_cat_2), 32);
             $g->increasePlayTime($slug);
 			
             return view('game.game', [
                 'g' => $game,
                 'role' => $role,
                 'g_similar' => $g_similar,
-                'gc_by_id' => $gc_by_id, // array all cat by id: (id => (name, slug)),...
+                'gt_by_id' => $gt_by_id, // array all cat by id: (id => (name, slug)),...
                 'arr_tags' => array_unique($arr_tags)
             ]);
         } else {
 
-            $g_randomcat = $g->getGamesByCatID(6); // Shooting
+            $g_randomcat = $g->getGamesByCatID(28); // Puzzle
 
             return view('game.game', [
                 'role' => $role,
                 'g_randomcat' => $g_randomcat,
-                'gc_by_id' => $gc_by_id, 
+                'gt_by_id' => $gt_by_id, 
                 'arr_tags' => array_unique($arr_tags)
             ]);
         }

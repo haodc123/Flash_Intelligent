@@ -1,13 +1,13 @@
 <?php
 return [
 	'site_title.2' => 'Free Game Online',
-    'title.1' => 'GAME SELECTED AT ',
+    'title.1' => 'GAME FOR KIDS AT ',
 	'home.header_hot' => 'HOT GAME',
 	'home.subheader_hot' => 'Many peoples selected games',
 	'home.header_new' => 'NEW GAME',
 	'home.subheader_new' => 'Latest game can not good, but exciting...',
-	'home.header_underA' => 'GAME FOR KIDS HAVE YEARS OLD UNDER ',
-	'home.header_aboveA' => 'GAME FOR KIDS HAVE YEARS OLD ABOVE ',
+	'home.header_underA' => 'GAME FOR KIDS UNDER ',
+	'home.header_aboveA' => 'GAME FOR KIDS ABOVE ',
 	'home.subheader_underA' => 'Game developing skill and intelligent for kids have years old under ',
 	'home.subheader_aboveA' => 'Game developing skill and intelligent for kids have years old above ',
 	'all_cat' => 'See all categories',

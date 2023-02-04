@@ -98,13 +98,14 @@
 				tab.click(function(e) {
 
 					var x = jQuery(this),
-						y = x.data('tab'), // tab-2,...
-						id = x.data('id');
+						y = x.data('tab'), // tab-<id>
+						id = x.data('id'); // <id>
+						tag_name = x.data('tag-name'); // <tag_name>
 
 					var content_before = t.find('.' + y).html();
 
 					if (content_before == '')
-						callAPIGetGamesByCat(id, y, t);
+						callAPIGetGamesByTag(tag_name, y, t);
 
 					// Set Classes on Tabs
 						tab.removeClass('active');
@@ -120,9 +121,9 @@
 
 			});
 
-			function callAPIGetGamesByCat(id, y, t) {
+			function callAPIGetGamesByTag(tag_name, y, t) {
 				$.ajax({
-					url:"/api_cat/"+id,
+					url:"/api_tag/"+tag_name,
 					type: "GET",
 					headers: {
 					  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -104,15 +104,15 @@ class Game extends Model
                     ->orWhere('g_cat_yo', $compare, \Config::get('constants.general.step_year_old_A'))
                     ->take($n)->get();
     }
-    public function getGamesByCatT($catT, $n=self::num_item_inblock) {
-        if (isMobile()) {
-            return self::where('g_cat_t', $catT)
-                    ->where('g_not_mobi', 0)
-                    ->take($n)->get();
-        }
-        return self::where('g_cat_t', '=', $catT)
-                    ->take($n)->get();
-    }
+    // public function getGamesByTag($gtagname, $n=self::num_item_inblock) {
+    //     if (isMobile()) {
+    //         return self::where('g_tag', $gtagname)
+    //                 ->where('g_not_mobi', 0)
+    //                 ->take($n)->get();
+    //     }
+    //     return self::where('g_tag', '=', $gtagname)
+    //                 ->take($n)->get();
+    // }
     public function getGamesByCatIDs($arr_cat, $n=self::num_item_inblock) {
         foreach ($arr_cat as $key => $value) {
             $f = explode(",", $value);
@@ -142,7 +142,7 @@ class Game extends Model
         return self::where('g_title_slug', $slug)->first();
     }
 
-    public function getGamesByTags($tag_slug) {
+    public function getGamesByCatTags($tag_slug) {
         $lang = app()->getLocale();
         if ($lang != 'en') {
             return self::select('game.*')
@@ -154,15 +154,29 @@ class Game extends Model
 
         return self::select('game.*')
             ->join('game_cat', 'game.g_cat_1', '=', 'game_cat.id')
-            ->where('g_cat_tags_slug', 'like', '%'.$tag_slug.'%')->get();
+            ->where('g_tagags_slug', 'like', '%'.$tag_slug.'%')->get();
+    }
+    public function getGamesByTag($tag_slug) {
+        $lang = app()->getLocale();
+        if ($lang != 'en') {
+            if (isMobile()) {
+                return self::select('game.*')
+                    ->join('game_lang', 'game.id', '=', 'game_lang.g_id')
+                    // ->where('g_not_mobi', 0)
+                    ->where('g_tag', 'like', '%'.$tag_slug.'%')->get();
+            }
+            return self::select('game.*')
+                ->join('game_lang', 'game.id', '=', 'game_lang.g_id')
+                ->where('g_tag', 'like', '%'.$tag_slug.'%')->get();
+        }
+
+        return self::select('game.*')
+            ->where('g_tag', 'like', '%'.$tag_slug.'%')->get();
     }
 
     public function getGamesBySearch($kw) {
         return self::select('game.*')
-                ->join('game_cat', 'game.g_cat_1', '=', 'game_cat.id')
-                ->join('game_cat_lang', 'game.g_cat_1', '=', 'game_cat_lang.g_cat_id')
-                ->where('game_cat.g_cat_name', 'like', '%'.$kw.'%')
-                ->orWhere('game_cat_lang.g_cat_name', 'like', '%'.$kw.'%')
+                ->where('g_tag', 'like', '%'.$kw.'%')
                 ->orWhere('g_title', 'like', '%'.$kw.'%')->get();
     }
 
@@ -228,6 +242,18 @@ class Game extends Model
             return ($oldVote*$oldTime+5)/($oldTime+1);
         else
             return ($oldVote*$oldTime+1)/($oldTime+1);
+    }
+    public function getGamesByTagName($tag_name, $n=self::num_item_inblock) {
+        if (isMobile()) {
+            return self::where(function($query) use ($tag_name)
+                    {
+                        $query->where('g_tag', '=', $tag_name);
+                    })
+                    ->where('g_not_mobi', 0)
+                    ->take($n)->get();
+        }
+        return self::where('g_tag', $tag_name)
+                    ->take($n)->get();
     }
 
 }

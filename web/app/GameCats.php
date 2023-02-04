@@ -48,40 +48,48 @@ class GameCats extends Model
         return self::select('g_cat_slug')->where('id', $id)->get();
     }
 	public function getCatIDBySlug($slug) {
-        $lang = app()->getLocale();
-        if ($lang != 'en') {
-            $_slug = htmlspecialchars($slug, ENT_QUOTES);
-            return DB::select(DB::raw("SELECT g_cat_id as id FROM game_cat_lang WHERE g_cat_slug = '".$slug."' AND lang = '".$lang."'"));
-        }
-		return self::select('id')->where('g_cat_slug', $slug)->get();
+        // $lang = app()->getLocale();
+        // if ($lang != 'en') {
+        //     $_slug = htmlspecialchars($slug, ENT_QUOTES);
+        //     return DB::select(DB::raw("SELECT g_cat_id as id FROM game_cat_lang WHERE g_cat_slug = '".$slug."' AND lang = '".$lang."'"));
+        // }
+        // return self::select('id')->where('g_cat_slug', $slug)->get();
+        switch ($slug) {
+			case 'Puzzle':
+				return 28;
+			case 'Board-game':
+				return 65;
+			default:
+				return 28;
+		}
     }
     public function getAllTags() {
-        return self::select('g_cat_tags', 'g_cat_tags_slug')->get();
+        return self::select('g_tagags', 'g_tagags_slug')->get();
     }
-    // public function getAllCatT() {
+    // public function getAllTag() {
     //     $lang = app()->getLocale();
     //     if ($lang != 'en') {
-    //         return DB::select(DB::raw("SELECT g_cat_t_name, g_cat_t_slug FROM game_cat_t_lang where lang = '".$lang."'"));
+    //         return DB::select(DB::raw("SELECT g_tag_name, g_tag_slug FROM game_tag_lang where lang = '".$lang."'"));
     //     }
-    //     return DB::select(DB::raw("SELECT g_cat_t_name, g_cat_t_slug FROM game_cat_t"));
+    //     return DB::select(DB::raw("SELECT g_tag_name, g_tag_slug FROM game_tag"));
     // }
 
     public function getArrayCatRichInfo() {
-        $gc_all = self::getAllGameCats();
+        $gt_all = self::getAllGameCats();
         $arr_tags = array();
-        $gc_by_id = array();
-        for ($i=0; $i<sizeof($gc_all); $i++) {
-            $gc_by_id[$gc_all[$i]->id] = array(
-                $gc_all[$i]->g_cat_name,
-                $gc_all[$i]->g_cat_slug,
-                $gc_all[$i]->g_cat_order
+        $gt_by_id = array();
+        for ($i=0; $i<sizeof($gt_all); $i++) {
+            $gt_by_id[$gt_all[$i]->id] = array(
+                $gt_all[$i]->g_cat_name,
+                $gt_all[$i]->g_cat_slug,
+                $gt_all[$i]->g_cat_order
             );
-            // $arr_t = explode(',', $gc_all[$i]->g_cat_tags_slug);
+            // $arr_t = explode(',', $gt_all[$i]->g_tagags_slug);
             // for ($t=0; $t<sizeof($arr_t); $t++) {
             //     if ($arr_t[$t] != '')
             //         array_push($arr_tags, $arr_t[$t]);
             // }
         }
-        return array($gc_by_id, $arr_tags);
+        return array($gt_by_id, $arr_tags);
     }            
 }

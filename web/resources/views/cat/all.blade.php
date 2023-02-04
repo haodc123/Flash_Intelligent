@@ -15,7 +15,7 @@
 										@for ($i = 0; $i < 8; $i++)
 											@if (isset($g_randomcat[$i]))
 												@component('components.box', [
-														'gc_by_id' => $gc_by_id, 
+														'gt_by_id' => $gt_by_id, 
 														'gi' => $g_randomcat[$i],
 														'role' => 0
 													])
@@ -40,7 +40,7 @@
 										<div class="g-b-cat tab tab-1 flex flex-3 active">
 										@for ($i = 8; $i < sizeof($g_randomcat); $i++)
 											@component('components.box', [
-													'gc_by_id' => $gc_by_id, 
+													'gt_by_id' => $gt_by_id, 
 													'gi' => $g_randomcat[$i],
 													'role' => 0
 												])
@@ -49,8 +49,8 @@
 										</div>
 								</div>
 								<ul class="tab-list">
-									@foreach ($gc_by_id as $gc_by_id_i)
-										<li class="tags"><a href="../cat/{{ $gc_by_id_i[1] }}" data-tab="tab-1">{{ $gc_by_id_i[0] }}</a></li>
+									@foreach ($gt_by_id as $gt_by_id_i)
+										<li class="tags"><a href="../cat/{{ $gt_by_id_i[1] }}" data-tab="tab-1">{{ $gt_by_id_i[0] }}</a></li>
 										
 									@endforeach
 								</ul>
@@ -63,6 +63,6 @@
 		
 
 
-@component('components.footer', ['gc_by_id' => $gc_by_id, 'arr_tags' => $arr_tags])
+@component('components.footer', ['gt_by_id' => $gt_by_id, 'arr_tags' => $arr_tags])
 
 @endcomponent

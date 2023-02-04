@@ -1,15 +1,15 @@
 <?php
 return [
 	'site_title.2' => 'Game Online Trẻ em Thông minh Miễn phí',
-    'title.1' => 'KIDS GAME TẠI',
+    'title.1' => 'GAME TRẺ EM THÔNG MINH TẠI',
 	'home.header_hot' => 'GAME HOT NHẤT',
 	'home.subheader_hot' => 'Game được nhiều người chơi đánh giá tốt',
 	'home.header_new' => 'GAME MỚI NHẤT',
 	'home.subheader_new' => 'Mới nhất chưa chắc đã hay, nhưng sẽ thú vị...',
 	'home.header_underA' => 'GAME CHO TRẺ TUỔI DƯỚI ',
 	'home.header_aboveA' => 'GAME CHO TRẺ TUỔI TRÊN ',
-	'home.subheader_underA' => 'Game phát triển kỹ năng và thông minh cho trẻ tuổi dưới ',
-	'home.subheader_aboveA' => 'Game phát triển kỹ năng và thông minh cho trẻ tuổi trên ',
+	'home.subheader_underA' => 'Game phát triển kỹ năng và thông minh cho trẻ dưới ',
+	'home.subheader_aboveA' => 'Game phát triển kỹ năng và thông minh cho trẻ trên ',
 	'all_cat' => 'Xem tất cả thể loại',
 	'cat.title.1' => 'Game',
 	'cat.title.2' => 'tại',

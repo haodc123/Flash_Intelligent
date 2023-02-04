@@ -65,7 +65,7 @@
 					<br />
 					
 					<span><strong>{{ trans('message.game.author') }}:</strong>&nbsp; {{ $g->g_author }}</span><br />
-					<span><strong>{{ trans('message.game.cat') }}:</strong>&nbsp; ⯈ <a href="../cat/{{ $gc_by_id[$g->g_cat_1][1] }}">{{ $gc_by_id[$g->g_cat_1][0] }}</a></span><br />
+					<span><strong>{{ trans('message.game.cat') }}:</strong>&nbsp; ⯈ <a href="../tag/{{ $gt_by_id[$g->g_cat_1][1] }}">{{ $gt_by_id[$g->g_cat_1][0] }}</a></span><br />
 					<span><strong>{{ trans('message.game.desc') }}:</strong>&nbsp; {{ $g->g_desc }}</span><br />
 					<span><strong>{{ trans('message.game.guide') }}:</strong>&nbsp; {{ $g->g_guide }}</span>
 				</div>
@@ -87,7 +87,7 @@
 							<div class="g-b-cat tab tab-1 flex flex-3 active">
 							@for ($i = 8; $i < sizeof($g_randomcat); $i++)
 								@component('components.box', [
-										'gc_by_id' => $gc_by_id, 
+										'gt_by_id' => $gt_by_id, 
 										'gi' => $g_randomcat[$i],
 										'role' => 0
 									])
@@ -100,7 +100,7 @@
 							<div class="g-b-cat tab tab-1 flex flex-3 active">
 							@for ($i = 8; $i < sizeof($g_similar); $i++)
 								@component('components.box', [
-										'gc_by_id' => $gc_by_id, 
+										'gt_by_id' => $gt_by_id, 
 										'gi' => $g_similar[$i],
 										'role' => 0
 									])
@@ -111,9 +111,9 @@
 					@endif
 					<ul class="tab-list">
 						<li class="home"><a href="#" data-tab="tab-1" class="active">{{ trans('message.game.similar') }}</a></li>
-						@foreach ($gc_by_id as $gc_by_id_i)
-							@if ($gc_by_id_i[2] == 11 || $gc_by_id_i[2] == 22)
-								<li class="tags"><a href="../cat/{{ $gc_by_id_i[1] }}" data-tab="tab-1">{{ $gc_by_id_i[0] }}</a></li>
+						@foreach ($gt_by_id as $gt_by_id_i)
+							@if ($gt_by_id_i[2] == 11 || $gt_by_id_i[2] == 22)
+								<li class="tags"><a href="../tag/{{ $gt_by_id_i[1] }}" data-tab="tab-1">{{ $gt_by_id_i[0] }}</a></li>
 							@endif
 						@endforeach
 					</ul>
@@ -139,6 +139,6 @@
 
 
 
-@component('components.footer', ['gc_by_id' => $gc_by_id, 'arr_tags' => $arr_tags])
+@component('components.footer', ['gt_by_id' => $gt_by_id, 'arr_tags' => $arr_tags])
 
 @endcomponent

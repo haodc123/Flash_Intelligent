@@ -16,9 +16,10 @@
 										@for ($i = 0; $i < 8; $i++)
 											@if (isset($g[$i]))
 												@component('components.box', [
-														'gc_by_id' => $gc_by_id, 
+														'gt_by_id' => $gt_by_id, 
 														'gi' => $g[$i],
-														'role' => 0
+														'role' => 0,
+														'tag' => 1
 													])
 												@endcomponent
 											@endif
@@ -41,18 +42,19 @@
 										<div class="g-b-cat tab tab-1 flex flex-3 active">
 										@for ($i = 8; $i < sizeof($g); $i++)
 											@component('components.box', [
-													'gc_by_id' => $gc_by_id, 
+													'gt_by_id' => $gt_by_id, 
 													'gi' => $g[$i],
-													'role' => 0
+													'role' => 0,
+													'tag' => 1
 												])
 											@endcomponent
 										@endfor
 										</div>
 								</div>
 								<ul class="tab-list">
-									@foreach ($gc_by_id as $gc_by_id_i)
-										@if ($gc_by_id_i[2] == 1 || $gc_by_id_i[2] == 2)
-											<li class="tags"><a href="../cat/{{ $gc_by_id_i[1] }}" data-tab="tab-1">{{ $gc_by_id_i[0] }}</a></li>
+									@foreach ($gt_by_id as $gt_by_id_i)
+										@if ($gt_by_id_i[2] == 1 || $gt_by_id_i[2] == 2)
+											<li class="tags"><a href="../cat/{{ $gt_by_id_i[1] }}" data-tab="tab-1">{{ $gt_by_id_i[0] }}</a></li>
 										@endif
 									@endforeach
 								</ul>
@@ -65,6 +67,6 @@
 		
 
 
-@component('components.footer', ['gc_by_id' => $gc_by_id, 'arr_tags' => $arr_tags])
+@component('components.footer', ['gt_by_id' => $gt_by_id, 'arr_tags' => $arr_tags])
 
 @endcomponent
