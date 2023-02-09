@@ -12,7 +12,6 @@
 		<span class="small"><br />⯈ {!! showCat($gi->g_cat_1, $gi->g_tag) !!}</span>
 	@endif
 	</p>
-	
 	@if ($role == 1)
 	<a style="height: 30%" href="../game/{{ $gi->g_title_slug }}" class="link"><span>{{ $gi->g_title }}</span></a>
 	<form method="post" action="{{ route('manage_game')}}">

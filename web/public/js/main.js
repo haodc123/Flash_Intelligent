@@ -5,10 +5,10 @@
 */
 
 (function($) {
-
+	
 	// Lazy load image
 	// https://viblo.asia/p/ban-chat-cua-lazy-loading-images-RQqKLAamZ7z
-	var lazyloadImages = document.querySelectorAll("img.lazy");    
+	var lazyloadImages = document.querySelectorAll("img.lazy");
 	var lazyloadThrottleTimeout;
 	
 	function lazyload () {
@@ -96,7 +96,7 @@
 					tabs 	= t.find('.tab');
 
 				tab.click(function(e) {
-
+					
 					var x = jQuery(this),
 						y = x.data('tab'), // tab-<id>
 						id = x.data('id'); // <id>
@@ -120,7 +120,6 @@
 				});
 
 			});
-
 			function callAPIGetGamesByTag(tag_name, y, t) {
 				$.ajax({
 					url:"/api_tag/"+tag_name,
@@ -162,7 +161,7 @@
 					}
 				}
 				if (res[0].length >= 12)
-					content += '<a href="cat/'+res[1][0]['g_cat_slug']+'" class="link-more">See more</a>';
+					content += '<a href="tag/'+res[1]+'" class="link-more">See more</a>';
 				t.find('.' + y).html(content);
 			}
 			function getFolder(site) {

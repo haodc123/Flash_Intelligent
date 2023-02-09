@@ -30,7 +30,7 @@ class GameController extends Controller
             $role = $user->role;
 		
         if ($game) {
-            $g_similar = $g->getGamesByCatIDs(array($game->g_cat_1, $game->g_cat_2), 32);
+            $g_similar = $g->getGamesByCatID($game->g_cat_1, 32);
             $g->increasePlayTime($slug);
 			
             return view('game.game', [

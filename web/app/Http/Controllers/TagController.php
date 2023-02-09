@@ -18,9 +18,15 @@ class TagController extends Controller
         
         $gt_all = $gt->getArrayTagRichInfo();
         $gt_by_id = $gt_all[0];
-        $arr_tags = $gt_all[1];
+		$arr_tags = $gt_all[1];
+		
+		$user = \Auth::user();
+		$role = -1; // no user logged in
+		if (isset($user))
+            $role = $user->role;
 		
         return view('tags.tags', [
+			'role' => $role,
 			'slug' => $slug,
 			'g' => $g_by_tags, // all games by tags
 			'gt_by_id' => $gt_by_id, // array all tag by id: (id => (name, slug)),...

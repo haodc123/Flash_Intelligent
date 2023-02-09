@@ -118,7 +118,7 @@ function slugifyUnicode($title) {
 
 function showCat($cat1, $gtagname, $cat2 = 0, $catyo = 0) {
 	if ($gtagname != '0')
-		return '<a href="tag/'.slugifyUnicode($gtagname).'">'.$gtagname.'</a>';
+		return '<a href="../tag/'.slugifyUnicode($gtagname).'">'.$gtagname.'</a>';
 	else {
 		switch ($cat1) {
 			case 28:
@@ -133,7 +133,7 @@ function showCat($cat1, $gtagname, $cat2 = 0, $catyo = 0) {
 				$cat_name = 'Puzzle';
 				$cat_slug = 'Puzzle';
 		}
-		return '<a href="cat/'.$cat_slug.'">'.$cat_name.'</a>';
+		return '<a href="../cat/'.$cat_slug.'">'.$cat_name.'</a>';
 	}
 }
 

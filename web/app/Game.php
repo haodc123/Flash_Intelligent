@@ -2,7 +2,7 @@
 
 namespace App;
 
-Use DB;
+use DB;
 use Helpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,10 +22,10 @@ class Game extends Model
 
     protected $num_item_inblock = 0;
 
-    public function __construct()
-    {
-        $this->num_item_inblock = \Config::get('constants.general.number_game_in_block');
-    }
+    // public function __construct()
+    // {
+    //     $this->num_item_inblock = \Config::get('constants.general.number_game_in_block');
+    // }
 
     public function getAllGames() {
         return self::all();
@@ -76,7 +76,7 @@ class Game extends Model
                     ->take($n)->get();
     }
 
-    public function getGamesByCatID($cat, $n=self::num_item_inblock) {
+    public function getGamesByCatID($cat, $n=32) {
         if (isMobile()) {
             return self::where(function($query) use ($cat)
                     {
@@ -90,7 +90,7 @@ class Game extends Model
                     ->orWhere('g_cat_2', $cat)
                     ->take($n)->get();
     }
-    public function getGamesByCatYO($age, $compare, $n=self::num_item_inblock) {
+    public function getGamesByCatYO($age, $compare, $n=32) {
         if (isMobile()) {
             return self::where(function($query) use ($compare)
                     {
@@ -203,6 +203,7 @@ class Game extends Model
         $orentation = $orentation ?? $g->g_dimension;
         $guide = $guide ?? $g->g_guide;
         $del = $del == 1 ? date("Y-m-d H:i:s") : null;
+        dump($del);
 
         self::where('g_title_slug', $slug)
             ->update([
@@ -250,9 +251,11 @@ class Game extends Model
                         $query->where('g_tag', '=', $tag_name);
                     })
                     ->where('g_not_mobi', 0)
+                    // ->where('deleted_at', null)
                     ->take($n)->get();
         }
         return self::where('g_tag', $tag_name)
+                    // ->where('deleted_at', null)
                     ->take($n)->get();
     }
 

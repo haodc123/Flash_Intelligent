@@ -54,7 +54,7 @@
 									<a href="game/{{ $gbc_aA[$i]->g_title_slug }}" class="link"><span>{{ $gbc_aA[$i]->g_title }}</span></a>
 								</div>
 							@endfor
-							<a href="cat/{{ $gbc_aA[0]->g_cat_2 ? $gt_by_id[$gbc_aA[0]->g_cat_2][1] : $gt_by_id[$gbc_aA[0]->g_cat_1][1] }}" class="link-more">See more</a>
+							<a href="" class="a link-more">See more</a>
 						@endif
 							</div>
 
@@ -73,7 +73,6 @@
 							<li class="home"><a href="#" data-id="{{ $key }}" data-tag-name="{{ $gt_by_id_i[0] }}" data-tab="tab-{{ $key }}">{{ $gt_by_id_i[0] }}</a></li>
 						@endif
 					@endforeach
-						<li class="more"><a href="cat/">>>&nbsp; {{ trans('message.all_cat') }}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -93,7 +92,6 @@
 							<li class="home"><a href="#" data-id="{{ $key }}" data-tag-name="{{ $gt_by_id_i[0] }}" data-tab="tab-{{ $key }}">{{ $gt_by_id_i[0] }}</a></li>
 						@endif
 					@endforeach
-						<li class="more"><a href="cat/">>>&nbsp; {{ trans('message.all_cat') }}</a></li>
 					</ul>
 					<div class="tabs">
 
@@ -111,7 +109,7 @@
 									<a href="game/{{ $gbc_uA[$i]->g_title_slug }}" class="link"><span>{{ $gbc_uA[$i]->g_title }}</span></a>
 								</div>
 							@endfor
-							<a href="cat/{{ $gbc_uA[0]->g_cat_2 ? $gt_by_id[$gbc_uA[0]->g_cat_2][1] : $gt_by_id[$gbc_uA[0]->g_cat_1][1] }}" class="link-more">See more</a>
+							<a href="" class="u link-more">See more</a>
 						@endif
 							</div>
 

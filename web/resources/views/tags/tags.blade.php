@@ -18,7 +18,8 @@
 												@component('components.box', [
 														'gt_by_id' => $gt_by_id, 
 														'gi' => $g[$i],
-														'role' => 0,
+														'role' => $role,
+														'cat' => 0,
 														'tag' => 1
 													])
 												@endcomponent
@@ -54,7 +55,7 @@
 								<ul class="tab-list">
 									@foreach ($gt_by_id as $gt_by_id_i)
 										@if ($gt_by_id_i[2] == 1 || $gt_by_id_i[2] == 2)
-											<li class="tags"><a href="../cat/{{ $gt_by_id_i[1] }}" data-tab="tab-1">{{ $gt_by_id_i[0] }}</a></li>
+											<li class="tags"><a href="../tag/{{ $gt_by_id_i[1] }}" data-tab="tab-1">{{ $gt_by_id_i[0] }}</a></li>
 										@endif
 									@endforeach
 								</ul>
