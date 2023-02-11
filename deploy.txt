@@ -2,7 +2,7 @@ Deploy to shared host:
 - https://viblo.asia/p/deploy-laravel-5-len-shared-hosting-Qbq5Q4qXlD8
 
 Update:
-- after do above link:
+- do above link:
   + Upload
   + Move public content to public_html
   + Edit public_html/index.php

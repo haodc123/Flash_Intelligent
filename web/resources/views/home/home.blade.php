@@ -30,7 +30,7 @@
 						<li><button type="submit" name="search_btn">{{ trans('message.search.button') }}</button></li>
 					</ul>
 				</form>
-			</div>
+			</div><br />
 
 			<header>
 				<h3>{{ trans('message.home.header_aboveA') }}{{ Config::get('constants.general.step_year_old_A') }}</h3>
