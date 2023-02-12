@@ -3562,7 +3562,9 @@
 		#header {
 			min-width: 320px;
 		}
-
+		#g-by-cat-1 .tab-list, #g-by-cat-2 .tab-list {
+			display: none;
+		}
 	}
 
 /* Menu */
@@ -3848,6 +3850,10 @@
 
 			#banner p {
 				font-size: 1em;
+			}
+
+			#g-by-cat-2 header {
+				padding-right: 20px !important;
 			}
 
 		}

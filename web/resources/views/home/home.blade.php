@@ -67,7 +67,6 @@
 					</div>
 
 					<ul class="tab-list">
-					@php //dump($gt_by_id) @endphp
 					@foreach ($gt_by_id as $key=>$gt_by_id_i)
 						@if ($gt_by_id_i[2] == 22 || $gt_by_id_i[2] == 11)
 							<li class="home"><a href="#" data-id="{{ $key }}" data-tag-name="{{ $gt_by_id_i[0] }}" data-tab="tab-{{ $key }}">{{ $gt_by_id_i[0] }}</a></li>

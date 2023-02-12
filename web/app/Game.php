@@ -46,33 +46,39 @@ class Game extends Model
         if (isMobile()) {
             return self::whereIn('g_hot', array(1,2))
                     ->where('g_not_mobi', 0)
+                    ->orderBy('g_vote', 'DESC')
                     ->orderBy('g_vote_time', 'DESC')
                     ->take($n)->get();
         }
         return self::whereIn('g_hot', array(1,2))
                     ->orderBy('g_vote', 'DESC')
+                    ->orderBy('g_vote_time', 'DESC')
                     ->take($n)->get();
     }
     public function getSpecialGames($n) {
         if (isMobile()) {
             return self::where('g_hot', 2)
                     ->where('g_not_mobi', 0)
+                    ->orderBy('g_vote', 'DESC')
                     ->orderBy('g_vote_time', 'DESC')
                     ->take($n)->get();
         }
         return self::where('g_hot', 2)
                     ->orderBy('g_vote', 'DESC')
+                    ->orderBy('g_vote_time', 'DESC')
                     ->take($n)->get();
     }
     public function getHotGames($n) {
         if (isMobile()) {
             return self::where('g_hot', 1)
                     ->where('g_not_mobi', 0)
+                    ->orderBy('g_vote', 'DESC')
                     ->orderBy('g_vote_time', 'DESC')
                     ->take($n)->get();
         }
         return self::where('g_hot', 1)
                     ->orderBy('g_vote', 'DESC')
+                    ->orderBy('g_vote_time', 'DESC')
                     ->take($n)->get();
     }
 
@@ -91,18 +97,36 @@ class Game extends Model
                     ->take($n)->get();
     }
     public function getGamesByCatYO($age, $compare, $n=32) {
-        if (isMobile()) {
-            return self::where(function($query) use ($compare)
-                    {
-                        $query->where('g_cat_yo', 0);
-                        $query->orWhere('g_cat_yo', $compare, \Config::get('constants.general.step_year_old_A'));
-                    })
-                    ->where('g_not_mobi', 0)
-                    ->take($n)->get();
+        if ($compare == '<') {
+            if (isMobile()) {
+                return self::where(function($query) use ($compare)
+                        {
+                            $query->where('g_cat_yo', 0);
+                            $query->orWhere('g_cat_yo', $compare, \Config::get('constants.general.step_year_old_A'));
+                        })
+                        ->where('g_not_mobi', 0)
+                        ->orderBy('g_vote', 'DESC')
+                        ->orderBy('g_vote_time', 'DESC')
+                        ->take($n)->get();
+            }
+            return self::where('g_cat_yo', 0)
+                        ->orWhere('g_cat_yo', $compare, \Config::get('constants.general.step_year_old_A'))
+                        ->orderBy('g_vote', 'DESC')
+                        ->orderBy('g_vote_time', 'DESC')
+                        ->take($n)->get();
+        } else {
+            if (isMobile()) {
+                return self::where('g_cat_yo', $compare, \Config::get('constants.general.step_year_old_A'))
+                        ->where('g_not_mobi', 0)
+                        ->orderBy('g_vote', 'DESC')
+                        ->orderBy('g_vote_time', 'DESC')
+                        ->take($n)->get();
+            }
+            return self::where('g_cat_yo', $compare, \Config::get('constants.general.step_year_old_A'))
+                        ->orderBy('g_vote', 'DESC')
+                        ->orderBy('g_vote_time', 'DESC')
+                        ->take($n)->get();
         }
-        return self::where('g_cat_yo', 0)
-                    ->orWhere('g_cat_yo', $compare, \Config::get('constants.general.step_year_old_A'))
-                    ->take($n)->get();
     }
     // public function getGamesByTag($gtagname, $n=self::num_item_inblock) {
     //     if (isMobile()) {
