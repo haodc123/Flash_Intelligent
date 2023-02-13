@@ -60,7 +60,8 @@ class GameController extends Controller
         $play_time = $request->input('m_play_time');
         $hot = $request->input('m_hot');
         $cat1 = $request->input('m_cat1');
-        $cat2 = $request->input('m_cat2');
+        $cat_yo = $request->input('m_cat_yo');
+        $tag_name = $request->input('m_tag_name');
         $desc = $request->input('m_desc');
         $guide = $request->input('m_guide');
         $not_mobi = $request->input('m_not_mobi');
@@ -68,7 +69,7 @@ class GameController extends Controller
         $del = $request->input('m_delete');
         $slug = $request->input('m_slug');
 
-        $g->updateGameInfo($vote, $vote_time, $play_time, $hot, $cat1, $cat2, $desc, $guide, $not_mobi, $orentation, $del, $slug);
+        $g->updateGameInfo($vote, $vote_time, $play_time, $hot, $cat1, $cat_yo, $tag_name, $desc, $guide, $not_mobi, $orentation, $del, $slug);
 
         return redirect()->back();
     }

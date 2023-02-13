@@ -22,7 +22,8 @@
 			<li><input placeholder="Play_time" type="text" name="m_play_time" /></li>
 			<li><input placeholder="Hot" type="text" name="m_hot" /></li>
 			<li><input placeholder="Cat 1" type="text" name="m_cat1" /></li>
-			<li><input placeholder="Cat 2" type="text" name="m_cat2" /></li>
+			<li><input placeholder="Cat YO" type="text" name="m_cat_yo" /></li>
+			<li><input placeholder="Tag name" type="text" name="m_tag_name" /></li>
 			<li><input placeholder="Desc" type="text" name="m_desc" /></li>
 			<li><input placeholder="Guide" type="text" name="m_guide" /></li>
 			<li><input placeholder="Not mobi" type="text" name="m_not_mobi" /></li>

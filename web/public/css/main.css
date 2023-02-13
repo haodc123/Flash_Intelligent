@@ -3,6 +3,13 @@
 @import url(Debug.css);
 @import url("https://fonts.googleapis.com/css?family=Signika:300,700");
 
+
+@font-face {
+    font-family: 'Determination';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/SVN-Determination Sans.otf');
+}
 /* @font-face {
     font-family: 'Gang';
     font-style: normal;
@@ -10,23 +17,17 @@
     src: url('../fonts/SVN-Gang of Three.otf');
 }
 @font-face {
-    font-family: 'Determination';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/SVN-Determination Sans.otf');
-}
-@font-face {
     font-family: 'Collegiate';
     font-style: normal;
     font-weight: 600;
     src: url('../fonts/SF Collegiate Solid Bold Italic.ttf');
-} */
+}
 @font-face {
     font-family: 'Cintra';
     font-style: normal;
     font-weight: 600;
     src: url('../fonts/SVN-Cintra.otf');
-}
+} */
 /*
 	Broadcast by TEMPLATED
 	templated.co @templatedco
@@ -3742,10 +3743,10 @@
 
 		#banner header {
 			margin-bottom: 80px;
-			font-family: Cintra;
+			font-family: Determination;
 		}
 		#header, header h3, header h4 {
-			font-family: Cintra;
+			font-family: Determination;
 		}
 
 			#banner .inner .saleoff span {
@@ -4465,3 +4466,19 @@ span.kw {
 				margin: 8px !important;
 			}
 		}
+
+
+#g-by-cat-2 .paging ul {
+	font-size: 16px;
+	width: auto;
+	margin-top: 20px;
+}
+#g-by-cat-2 .paging ul li {
+	display: inline;
+	margin-right: 3px;
+}
+#g-by-cat-2 .paging ul .page-item.active {
+	text-decoration: underline;
+	font-weight: 600;
+	background-color: rgba(255, 255, 255, 0.075);
+}

@@ -51,6 +51,9 @@
 											@endcomponent
 										@endfor
 										</div>
+										<div class="paging">
+											@php echo $g->links() @endphp
+										</div>
 								</div>
 								<ul class="tab-list">
 									<li class="cat"><a href="#" data-id="{{ $id }}" data-tab="tab-1" class="active">{{ $gt_by_id[$id][0] }}</a></li>

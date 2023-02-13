@@ -51,6 +51,9 @@
 											@endcomponent
 										@endfor
 										</div>
+										<div class="paging">
+											@php echo $g->links() @endphp
+										</div>
 								</div>
 								<ul class="tab-list">
 									@foreach ($gt_by_id as $gt_by_id_i)

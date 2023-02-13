@@ -90,11 +90,11 @@ class Game extends Model
                         $query->orWhere('g_cat_2', '=', $cat);
                     })
                     ->where('g_not_mobi', 0)
-                    ->take($n)->get();
+                    ->take($n)->paginate(100);
         }
         return self::where('g_cat_1', $cat)
                     ->orWhere('g_cat_2', $cat)
-                    ->take($n)->get();
+                    ->take($n)->paginate(100);
     }
     public function getGamesByCatYO($age, $compare, $n=32) {
         if ($compare == '<') {
@@ -187,15 +187,15 @@ class Game extends Model
                 return self::select('game.*')
                     ->join('game_lang', 'game.id', '=', 'game_lang.g_id')
                     // ->where('g_not_mobi', 0)
-                    ->where('g_tag', 'like', '%'.$tag_slug.'%')->get();
+                    ->where('g_tag', 'like', '%'.$tag_slug.'%')->paginate(10);
             }
             return self::select('game.*')
                 ->join('game_lang', 'game.id', '=', 'game_lang.g_id')
-                ->where('g_tag', 'like', '%'.$tag_slug.'%')->get();
+                ->where('g_tag', 'like', '%'.$tag_slug.'%')->paginate(10);
         }
 
         return self::select('game.*')
-            ->where('g_tag', 'like', '%'.$tag_slug.'%')->get();
+            ->where('g_tag', 'like', '%'.$tag_slug.'%')->paginate(10);
     }
 
     public function getGamesBySearch($kw) {
@@ -214,14 +214,15 @@ class Game extends Model
     public function getGameByID($id) {
         return self::where('id', $id)->first();
     }
-    public function updateGameInfo($vote, $vote_time, $play_time, $hot, $cat1, $cat2, $desc, $guide, $not_mobi, $orentation, $del, $slug) {
+    public function updateGameInfo($vote, $vote_time, $play_time, $hot, $cat1, $cat_yo, $tag_name, $desc, $guide, $not_mobi, $orentation, $del, $slug) {
         $g = self::getGameBySlug($slug);
         $vote = $vote ?? $g->g_vote;
         $vote_time = $vote_time ?? $g->g_vote_time; 
         $play_time = $play_time ?? $g->g_play_time;
         $hot = $hot ?? $g->g_hot;
         $cat1 = $cat1 ?? $g->g_cat_1;
-        $cat2 = $cat2 ?? $g->g_cat_2;
+        $cat_yo = $cat_yo ?? $g->g_cat_yo;
+        $tag_name = $tag_name ?? $g->g_tag;
         $desc = $desc ?? $g->g_desc;
         $not_mobi = $not_mobi ?? $g->g_not_mobi;
         $orentation = $orentation ?? $g->g_dimension;
@@ -236,7 +237,8 @@ class Game extends Model
                 'g_play_time' => $play_time,
                 'g_hot' => $hot,
                 'g_cat_1' => $cat1,
-                'g_cat_2' => $cat2,
+                'g_cat_yo' => $cat_yo,
+                'g_tag' => $tag_name,
                 'g_desc' => $desc,
                 'g_not_mobi' => $not_mobi,
                 'g_dimension' => $orentation,
