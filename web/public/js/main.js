@@ -170,6 +170,9 @@
 					case 'https://gamemonetize.com':
 						r = 'monetize'+'/';
 						break;
+					case 'https://gamedistribution.com':
+						r = 'distribution'+'/';
+						break;
 					case 'https://crazygames.com':
 						r = 'crazygames'+'/';
 						break;

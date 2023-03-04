@@ -57,6 +57,9 @@ function getPathThumb($site, $thumb) {
 		case 'https://gamemonetize.com':
 			$pthumb = 'monetize'.'/'.$thumb;
 			break;
+		case 'https://gamedistribution.com':
+			$pthumb = 'distribution'.'/'.$thumb;
+			break;
 		case 'https://crazygames.com':
 			$pthumb = 'crazygames'.'/'.$thumb;
 			break;
