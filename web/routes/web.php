@@ -21,6 +21,7 @@ Route::group(['middleware' => 'lang'], function() {
         return redirect()->route('home');
     });
     Route::get('game/{slug}', 'GameController@game')->name('game');
+    Route::get('game_m/{slug}', 'GameController@game_m')->name('game_m');
     Route::get('cat/{slug}', 'CatController@gamesbycat')->name('gamesbycat');
     Route::get('cat', 'CatController@allcat')->name('allcat');
     Route::get('tag/{slug}', 'TagController@gamesbytag')->name('gamesbytag');

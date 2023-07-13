@@ -53,6 +53,24 @@ class GameController extends Controller
         }
 	}
 
+    public function game_m($slug) {
+
+		$g = new Game();
+        
+		$game = $g->getGameBySlug($slug);
+
+        if ($game) {
+            $g->increasePlayTime($slug);
+			
+            return view('game.game_m', [
+                'g' => $game,
+            ]);
+        } else {
+
+            return 'No game found!';
+        }
+    }
+
     public function manage_game(Request $request) {
         $g = new Game();
         $vote = $request->input('m_vote');
