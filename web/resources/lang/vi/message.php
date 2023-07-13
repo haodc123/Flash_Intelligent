@@ -17,6 +17,7 @@ return [
 	'game.play' => 'Số lượt chơi',
 	'game.author' => 'Tác giả',
 	'game.cat' => 'Thể loại',
+	'game.bycat' => 'Game theo Thể loại',
 	'game.desc' => 'Giới thiệu',
 	'game.guide' => 'Cách chơi',
 	'game.not_exist' => 'Game không tồn tại...',

@@ -31,7 +31,7 @@
 			<div class="slideshow-container flex flex-3">
 				
 				<div class="g-b-cat tab tab-1 flex flex-3 active">
-					@for ($i = 0; $i < sizeof($g_hot); $i++)
+					@for ($i = 8; $i < sizeof($g_hot); $i++)
 						@component('components.box', [
 								'gt_by_id' => $gt_by_id, 
 								'gi' => $g_hot[$i],
@@ -50,7 +50,8 @@
 	<section id="g-by-cat-1" class="wrapper style2">
 		<div class="inner">
 			<header>
-				<h3>{{ trans('message.game.bycat') }}</h3>
+				<h3>{{ trans('message.home.header_underA') }}{{ Config::get('constants.general.step_year_old_A') }}</h3>
+				<p>{{ trans('message.home.subheader_underA') }}{{ Config::get('constants.general.step_year_old_A') }}</p>
 			</header>
 			<!-- Tabbed Video Section -->
 			<div class="flex flex-tabs">
@@ -91,6 +92,65 @@
 			</div>
 		</div>
 	</section>
+
+	<section id="g-by-cat-2" class="wrapper style2">
+		<div class="inner">
+			<div class="wrap_search">
+				<form method="post" action="{{ route('search')}}">
+					{{csrf_field()}}
+					<ul>
+						<li><input id="search_input" placeholder="{{ trans('message.search.placeholder') }}" type="text" name="search_data" /></li>
+						<li><button type="submit" name="search_btn">{{ trans('message.search.button') }}</button></li>
+					</ul>
+				</form>
+			</div><br />
+
+			<header>
+				<h3>{{ trans('message.home.header_aboveA') }}{{ Config::get('constants.general.step_year_old_A') }}</h3>
+				<p>{{ trans('message.home.subheader_aboveA') }}{{ Config::get('constants.general.step_year_old_A') }}</p>
+			</header>
+			<!-- Tabbed Video Section -->
+				<div class="flex flex-tabs">
+					
+					<div class="tabs">
+						<!-- Tab 1 -->
+							<div class="g-b-cat tab tab-1 flex flex-3 active">
+						@if (sizeof($gbc_aA) > 0)
+							@for ($i = 0; $i < sizeof($gbc_aA); $i++)
+								<div class="video col">
+									<div class="image fit">
+										<img src="../images/thumb/{{ getPathThumb($gbc_aA[$i]->g_site, $gbc_aA[$i]->g_thumb) }}" onerror="this.onerror=null;this.src='../images/thumb/thumb_def.png';" alt="{{ showAlt($gt_by_id, $gbc_aA[$i]->g_cat_1, $gbc_aA[$i]->g_tag) }}" />
+									</div>
+									<p class="caption">
+										<span class="title">{{ shortenStr($gbc_aA[$i]->g_title) }}</span>
+									</p>
+									<a href="game/{{ $gbc_aA[$i]->g_title_slug }}" class="link"><span>{{ $gbc_aA[$i]->g_title }}</span></a>
+								</div>
+							@endfor
+							<a href="" class="a link-more">See more</a>
+						@endif
+							</div>
+
+					@foreach ($gt_by_id as $key=>$gt_by_id_i)
+						@if ($gt_by_id_i[2] == 22 || $gt_by_id_i[2] == 11)
+							<div class="g-b-cat tab tab-{{ $key }} flex flex-3"></div>
+						@endif
+					@endforeach
+
+					</div>
+
+					<ul class="tab-list">
+					@foreach ($gt_by_id as $key=>$gt_by_id_i)
+						@if ($gt_by_id_i[2] == 22 || $gt_by_id_i[2] == 11)
+							<li class="home"><a href="#" data-id="{{ $key }}" data-tag-name="{{ $gt_by_id_i[0] }}" data-tab="tab-{{ $key }}">{{ $gt_by_id_i[0] }}</a></li>
+						@endif
+					@endforeach
+					</ul>
+				</div>
+			</div>
+		</section>
+
+	
 
 		<!-- <section id="cloud-cat" class="wrapper">
 		<div class="cloud-cat inner">

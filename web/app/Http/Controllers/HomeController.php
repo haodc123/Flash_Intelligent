@@ -14,7 +14,6 @@ class HomeController extends Controller
 
         $g = new Game();
         $gt = new GameTag();
-        $gt = new GameTag();
         $g_new = $g->getNewGames(\Config::get('constants.general.number_game_in_block'));
         $g_hot = $g->getHotnSpecialGames(\Config::get('constants.general.number_game_in_block')); 
 

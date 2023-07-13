@@ -17,6 +17,7 @@ return [
 	'game.play' => 'Play time',
 	'game.author' => 'Author',
 	'game.cat' => 'Category',
+	'game.bycat' => 'Game by Category',
 	'game.desc' => 'Description',
 	'game.guide' => 'How to play',
 	'game.not_exist' => 'Game not exist...',
