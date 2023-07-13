@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 11, 2023 at 07:43 AM
--- Server version: 5.7.26
--- PHP Version: 7.3.5
+-- Generation Time: Jul 13, 2023 at 01:21 PM
+-- Server version: 8.0.31
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,19 +29,19 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `blogs`;
 CREATE TABLE IF NOT EXISTS `blogs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `blog_title` varchar(256) NOT NULL,
   `blog_title_slug` varchar(256) NOT NULL,
   `blog_content` text NOT NULL,
   `blog_cat` varchar(30) NOT NULL,
   `blog_thumb` varchar(400) DEFAULT NULL,
-  `blog_author` int(11) DEFAULT NULL,
-  `blog_status` int(1) DEFAULT '1',
+  `blog_author` int DEFAULT NULL,
+  `blog_status` int DEFAULT '1',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -52,13 +51,13 @@ CREATE TABLE IF NOT EXISTS `blogs` (
 
 DROP TABLE IF EXISTS `blog_cat`;
 CREATE TABLE IF NOT EXISTS `blog_cat` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `blogs_cat_name` varchar(256) NOT NULL,
   `blogs_cat_name_slug` varchar(256) NOT NULL,
-  `blogs_cat_order` int(11) DEFAULT NULL,
-  `blogs_cat_status` int(11) DEFAULT '1',
+  `blogs_cat_order` int DEFAULT NULL,
+  `blogs_cat_status` int DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -68,35 +67,35 @@ CREATE TABLE IF NOT EXISTS `blog_cat` (
 
 DROP TABLE IF EXISTS `game`;
 CREATE TABLE IF NOT EXISTS `game` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `g_title` varchar(256) NOT NULL,
   `g_title_slug` varchar(256) NOT NULL,
   `g_type` varchar(30) NOT NULL,
-  `g_hot` int(11) NOT NULL DEFAULT '0',
+  `g_hot` int NOT NULL DEFAULT '0',
   `g_vote` float DEFAULT '4',
-  `g_vote_time` int(11) DEFAULT '12',
-  `g_play_time` int(11) NOT NULL DEFAULT '34',
+  `g_vote_time` int DEFAULT '12',
+  `g_play_time` int NOT NULL DEFAULT '34',
   `g_dimension` varchar(15) DEFAULT '0' COMMENT '1: portrait / 0: landscape',
   `g_link` varchar(300) NOT NULL,
   `g_site` varchar(60) DEFAULT NULL,
   `g_for_lang` varchar(3) DEFAULT NULL,
   `g_author` varchar(100) DEFAULT NULL,
-  `g_cat_1` int(11) NOT NULL COMMENT 'g_cat_1: puzzle / board',
-  `g_cat_2` int(11) DEFAULT NULL COMMENT 'g_cat_2: other cat',
-  `g_cat_yo` int(11) DEFAULT NULL COMMENT 'g_cat_yo: year old: 0: all; x: min x year old can play',
+  `g_cat_1` int NOT NULL COMMENT 'g_cat_1: puzzle / board',
+  `g_cat_2` int DEFAULT NULL COMMENT 'g_cat_2: other cat',
+  `g_cat_yo` int DEFAULT NULL COMMENT 'g_cat_yo: year old: 0: all; x: min x year old can play',
   `g_tag` varchar(25) DEFAULT NULL COMMENT 'g_tag: tag name',
-  `g_not_mobi` int(1) NOT NULL DEFAULT '0',
+  `g_not_mobi` int NOT NULL DEFAULT '0',
   `g_desc` text,
   `g_guide` text,
   `g_thumb` varchar(400) DEFAULT NULL,
-  `g_allow_embed` int(11) NOT NULL DEFAULT '1',
-  `g_status` int(11) DEFAULT '1',
+  `g_allow_embed` int NOT NULL DEFAULT '1',
+  `g_status` int DEFAULT '1',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `g_link` (`g_link`)
-) ENGINE=MyISAM AUTO_INCREMENT=4719 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4719 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `game`
@@ -2333,17 +2332,17 @@ INSERT INTO `game` (`id`, `g_title`, `g_title_slug`, `g_type`, `g_hot`, `g_vote`
 
 DROP TABLE IF EXISTS `game_cat`;
 CREATE TABLE IF NOT EXISTS `game_cat` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `g_cat_name` varchar(40) NOT NULL,
   `g_cat_slug` varchar(100) NOT NULL,
   `g_cat_tags` varchar(256) DEFAULT NULL COMMENT 'tag of cat (not tag of game)',
   `g_cat_tags_slug` varchar(256) DEFAULT NULL,
-  `g_cat_number` int(11) NOT NULL DEFAULT '0',
+  `g_cat_number` int NOT NULL DEFAULT '0',
   `g_cat_thumb` varchar(400) DEFAULT NULL,
-  `g_cat_order` int(11) DEFAULT NULL,
-  `g_cat_status` int(1) DEFAULT '1',
+  `g_cat_order` int DEFAULT NULL,
+  `g_cat_status` int DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=153 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `game_cat`
@@ -2448,14 +2447,14 @@ INSERT INTO `game_cat` (`id`, `g_cat_name`, `g_cat_slug`, `g_cat_tags`, `g_cat_t
 
 DROP TABLE IF EXISTS `game_cat_lang`;
 CREATE TABLE IF NOT EXISTS `game_cat_lang` (
-  `g_cat_id` int(11) NOT NULL,
+  `g_cat_id` int NOT NULL,
   `lang` varchar(4) NOT NULL,
   `g_cat_name` varchar(40) NOT NULL,
   `g_cat_slug` varchar(100) NOT NULL DEFAULT '',
   `g_cat_tags` varchar(256) DEFAULT NULL,
   `g_cat_tags_slug` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`g_cat_id`,`lang`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `game_cat_lang`
@@ -2477,14 +2476,14 @@ INSERT INTO `game_cat_lang` (`g_cat_id`, `lang`, `g_cat_name`, `g_cat_slug`, `g_
 
 DROP TABLE IF EXISTS `game_lang`;
 CREATE TABLE IF NOT EXISTS `game_lang` (
-  `g_id` int(11) NOT NULL,
+  `g_id` int NOT NULL,
   `lang` varchar(4) NOT NULL,
   `g_title` varchar(256) DEFAULT NULL,
   `g_title_slug` varchar(256) DEFAULT NULL,
   `g_desc` text,
   `g_guide` text,
   PRIMARY KEY (`g_id`,`lang`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2496,11 +2495,11 @@ DROP TABLE IF EXISTS `game_page`;
 CREATE TABLE IF NOT EXISTS `game_page` (
   `platform` varchar(50) NOT NULL,
   `page` varchar(300) NOT NULL,
-  `cat` int(11) NOT NULL,
+  `cat` int NOT NULL,
   `thumb` varchar(80) DEFAULT NULL,
   `type` varchar(30) NOT NULL DEFAULT 'HTML5',
   PRIMARY KEY (`page`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `game_page`
@@ -3639,14 +3638,14 @@ INSERT INTO `game_page` (`platform`, `page`, `cat`, `thumb`, `type`) VALUES
 
 DROP TABLE IF EXISTS `game_tag`;
 CREATE TABLE IF NOT EXISTS `game_tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `g_tag_name` varchar(25) NOT NULL,
   `g_tag_slug` varchar(25) NOT NULL,
-  `g_tag_number` int(11) DEFAULT NULL,
-  `g_tag_order` int(11) DEFAULT '0',
-  `g_tag_status` int(1) DEFAULT '1',
+  `g_tag_number` int DEFAULT NULL,
+  `g_tag_order` int DEFAULT '0',
+  `g_tag_status` int DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `game_tag`
@@ -3747,12 +3746,12 @@ INSERT INTO `game_tag` (`id`, `g_tag_name`, `g_tag_slug`, `g_tag_number`, `g_tag
 
 DROP TABLE IF EXISTS `game_tag_lang`;
 CREATE TABLE IF NOT EXISTS `game_tag_lang` (
-  `g_tag_id` int(11) NOT NULL,
+  `g_tag_id` int NOT NULL,
   `lang` varchar(4) NOT NULL,
   `g_tag_name` varchar(25) NOT NULL,
   `g_tag_slug` varchar(25) NOT NULL,
   PRIMARY KEY (`g_tag_id`,`lang`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -3762,13 +3761,13 @@ CREATE TABLE IF NOT EXISTS `game_tag_lang` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(200) DEFAULT NULL,
   `user_email` varchar(256) DEFAULT NULL,
   `user_tel` varchar(20) DEFAULT NULL,
   `user_addr` varchar(300) DEFAULT NULL,
-  `role` int(11) DEFAULT '0',
-  `user_point` int(11) DEFAULT NULL,
+  `role` int DEFAULT '0',
+  `user_point` int DEFAULT NULL,
   `user_pass` varchar(100) DEFAULT NULL,
   `user_avatar` varchar(300) DEFAULT NULL,
   `user_birth` datetime DEFAULT NULL,
@@ -3780,7 +3779,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `user_email` (`user_email`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users`
